@@ -12,7 +12,7 @@ describe Vendor do
   it 'has proper attributes' do
   vendor = Vendor.new("Rocky Mountain Fresh")
 
-  expect(vender.name).to eq("Rocky Mountain Fresh")
+  expect(vendor.name).to eq("Rocky Mountain Fresh")
   expect(vendor.inventory).to eq({})
   end
 
@@ -25,7 +25,7 @@ describe Vendor do
 
   vendor.stock(item1, 30)
 
-  expect(vendor.stock(item1)).to eq({item1=>30})
+  expect(vendor.inventory).to eq({item1=>30})
   expect(vendor.check_stock(item1)).to eq(30)
   end
 
