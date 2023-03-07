@@ -1,3 +1,5 @@
+require 'date'
+
 class Market
   attr_reader :name, :vendors, :vendor_names
 
@@ -6,6 +8,7 @@ class Market
     @vendors = []
     @vendor_names = []
     @item_count = Hash.new(0)
+    @date = Date.today
   end
 
   def add_vendor(vendor)
@@ -68,5 +71,22 @@ class Market
       end
     end
     item_array.join(", ")
+  end
+
+  def sell(item, amount)
+    @item_count = Hash.new(0)
+    sale = false
+    items = total_inventory
+    item_array = []
+    items.each do |item1 ,info|
+      item_array << item1
+    end
+    if item_array.include?(item.name) && items[item.name]["quantity"] >= amount
+      @vendors.each do |vendor|
+        vendor.inventory[item] -= amount
+        sale = true
+      end
+    end
+    sale
   end
 end
