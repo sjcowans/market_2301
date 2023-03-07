@@ -18,6 +18,7 @@ describe Market do
   end
 
   it 'can add vendors' do
+    market = Market.new("South Pearl Street Farmers Market")    
     vendor1 = Vendor.new("Rocky Mountain Fresh")
     item1 = Item.new({name: 'Peach', price: "$0.75"})
     item2 = Item.new({name: 'Tomato', price: "$0.50"})
@@ -38,6 +39,7 @@ describe Market do
   end
 
   it 'can show vendor names' do
+    market = Market.new("South Pearl Street Farmers Market")    
     vendor1 = Vendor.new("Rocky Mountain Fresh")
     item1 = Item.new({name: 'Peach', price: "$0.75"})
     item2 = Item.new({name: 'Tomato', price: "$0.50"})
@@ -58,6 +60,7 @@ describe Market do
   end
 
   it 'can show vendors that sell an item' do
+    market = Market.new("South Pearl Street Farmers Market")    
     vendor1 = Vendor.new("Rocky Mountain Fresh")
     item1 = Item.new({name: 'Peach', price: "$0.75"})
     item2 = Item.new({name: 'Tomato', price: "$0.50"})
@@ -74,11 +77,12 @@ describe Market do
     market.add_vendor(vendor2)    
     market.add_vendor(vendor3)
 
-    expect(market.vendors_that_sell(item1)).to eq[vendor1, vendor3]
-    expect(market.vendors_that_sell(item4)).to eq[vendor2]
+    expect(market.vendors_that_sell(item1)).to eq([vendor1, vendor3])
+    expect(market.vendors_that_sell(item4)).to eq([vendor2])
   end
 
   it 'can show potential revenue for ventors' do
+    market = Market.new("South Pearl Street Farmers Market")    
     vendor1 = Vendor.new("Rocky Mountain Fresh")
     item1 = Item.new({name: 'Peach', price: "$0.75"})
     item2 = Item.new({name: 'Tomato', price: "$0.50"})
